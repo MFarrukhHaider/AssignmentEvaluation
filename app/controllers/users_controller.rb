@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
     def show
         @beer = Beer.find(params[:id])
-        @beer2.id=@beer.id
+        @beer2=@beer.id
+        # byebug
     end
 end

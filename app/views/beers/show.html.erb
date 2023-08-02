@@ -2,7 +2,7 @@
 <h1><%= @beer.id %></h1>
 
 <p><%= @beer.tagline %></p>
-<td><%= link_to "Give Comment", "/users/#{@beer.id}/users_comments/new" %></td>
+<td><%= link_to "Give Comment", "/beers/#{@beer.id}/users_comments/new" %></td>
 
 <table class="table">
   <thead>

@@ -1,9 +1,18 @@
 class BeersController < ApplicationController
 
 
-    def index
+  def index
+    @beers=Beer.all
+    @user=User.find_by(id: current_user)
+    # byebug
+  end
+  def index1
 
-    end
+  end
+  def show
+    @beer = Beer.find(params[:id])
+    @beer2=@beer.id
+  end
 
     def fetch_data_from_public_api
         public_api_service = PublicApiService.new
