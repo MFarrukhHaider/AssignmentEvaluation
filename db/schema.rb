@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_29_144555) do
+ActiveRecord::Schema.define(version: 2023_08_01_084837) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -105,10 +105,22 @@ ActiveRecord::Schema.define(version: 2023_07_29_144555) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "users_comments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "beer_id", null: false
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["beer_id"], name: "index_users_comments_on_beer_id"
+    t.index ["user_id"], name: "index_users_comments_on_user_id"
+  end
+
   add_foreign_key "comments", "beers"
   add_foreign_key "comments", "users"
   add_foreign_key "favorite_beers", "beers"
   add_foreign_key "favorite_beers", "users"
   add_foreign_key "ratings", "beers"
   add_foreign_key "ratings", "users"
+  add_foreign_key "users_comments", "beers"
+  add_foreign_key "users_comments", "users"
 end

@@ -1,9 +1,4 @@
-# app/services/public_api_service.rb
-
 require 'httparty'
-
-
-# app/services/public_api_service.rb
 
 class PublicApiService
   include HTTParty
@@ -16,8 +11,6 @@ class PublicApiService
     else
       raise "Error fetching data from the API: #{response.code}"
     end
-  # rescue StandardError => e
-  #   raise "Error retrieving data from the API: #{e.message}"
   end
 end
 

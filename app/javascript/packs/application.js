@@ -4,6 +4,8 @@
 // that code so it'll be compiled.
 
 import Rails from "@rails/ujs"
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap'
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"

@@ -1,0 +1,33 @@
+<h1><%= @beer.name %></h1>
+<h1><%= @beer.id %></h1>
+
+<p><%= @beer.tagline %></p>
+<td><%= link_to "Give Comment", " /users_comments/new" %></td>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Tagline</th>
+      <th scope="col">Description</th>
+      <th scope="col">First_brewed</th>
+      <th scope="col">Attenuation_Level</th>
+
+
+
+
+      <th colspan="5">
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+    <tr>
+     
+   <td><%= @beer.name%></td>
+   <td><%= @beer.tagline%></td>
+   <td><%= @beer.description%></td>
+   <td><%= @beer.first_brewed%></td>
+   <td><%= @beer.attenuation_level%></td>
+
+    </tr>
+  </tbody>
+</table>

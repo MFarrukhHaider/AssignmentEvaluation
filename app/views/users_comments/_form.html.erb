@@ -1,0 +1,18 @@
+<%= form_with model: user_comment, url: '/users_comments' do |f| %>
+ <div>
+    <label>Current User ID:</label>
+    <span><%= current_user.id %></span>
+  </div>
+
+  <div>
+    <%= f.label :beer_id %>
+    <%= f.select :beer_id, options_for_select(Beer.pluck(:id), { prompt: 'Select a Beer' })%>
+  </div>
+  <div>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %><br>
+  </div>
+  <div>
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>

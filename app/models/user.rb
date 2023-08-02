@@ -2,7 +2,7 @@ class User < ApplicationRecord
 
   has_many :ratings
   has_many :favorite_beers
-  has_many :comments
+  has_many :users_comments
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -20,6 +20,6 @@ class User < ApplicationRecord
   end
   
   def self.ransackable_associations(auth_object = nil)
-    ["comments", "favorite_beers", "ratings"]
+    ["users_comments", "favorite_beers", "ratings"]
   end
 end

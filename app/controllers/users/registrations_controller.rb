@@ -11,10 +11,24 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
+  def create
+    super do |user|
+      UserMailer.welcome_email(user).deliver_now
+  end
+end
   #   super
+  #   @user=User.new(user_params)
+  #   UserMailer.welcome_email(@user).deliver_now
+
+  #   end
   # end
 
+
+  # def create
+  #   @user=User.new(user_params)
+  #   UserMailer.welcome_email(@user).deliver_now
+
+  # end
   # GET /resource/edit
   # def edit
   #   super
@@ -48,6 +62,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up,keys:[:full_name,:age,:address,:phone_number,:gender])
   end
+  # def user_params
+  #   params.require(:user).permit(:full_name,:age,:address,:phone_number,:gender)
+  # end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params

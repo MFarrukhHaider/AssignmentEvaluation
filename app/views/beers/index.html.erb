@@ -1,3 +1,28 @@
-<h1>
-Hello u are on index page
-</h1>
+
+<!-- app/views/beers/index.html.erb -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Beers Page</title>
+  <!-- Include Bootstrap and your custom CSS -->
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'user', media: 'all' %>
+</head>
+<body>
+  <div class="container">
+    <h1 class="mt-5">Welcome to the Beers Page</h1>
+    <p>
+      This page is all about beers! You can find information and links related to beers here.
+    </p>
+
+    <h2>Links:</h2>
+    <ul>
+      <li><%= link_to "Admin Login ", "/admin/login" %></li>
+      <li><%= link_to "User SignIn ", "/users/sign_in" %></li>
+      <li><%= link_to "User SignUp ", "/users/sign_up" %></li>
+     
+    </ul>
+  </div>
+
+</body>
+</html>
