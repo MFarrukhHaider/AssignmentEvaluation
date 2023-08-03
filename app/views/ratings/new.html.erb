@@ -1,0 +1,57 @@
+<h1>
+<%=@beer.name%>
+</h1>
+
+
+<table >
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Tagline</th>
+      <th scope="col">Description</th>
+      <th scope="col">First_brewed</th>
+      <th scope="col">Attenuation_Level</th>
+   <%# <th colspan="5"> %>
+
+    </tr>
+  </thead>
+  <tbody>
+   <td><%= @beer.name%></td>
+   <td><%= @beer.tagline%></td>
+   <td><%= @beer.description%></td>
+   <td><%= @beer.first_brewed%></td>
+   <td><%= @beer.attenuation_level%></td>
+  </tr>
+
+  </tbody>
+</table>
+
+<div>
+<h2> Give Ratings</h2>
+<%= form_with model: @rating, url: "/beers/#{@beer.id}/ratings" do |f| %>
+ <div>
+     <%= f.label :user_id%>
+     <%= f.hidden_field :user_id, value: current_user.id%>
+  </div>
+  <div>
+     <%= f.label :beer_id%>
+     <%= f.hidden_field :beer_id, value: @beer.id%>
+  </div>
+ <div>
+    <label>Beer ID:</label>
+    <span><%= @beer.id %></span>
+  </div>
+  <div>
+  <% Rating.beer_ratings.each do |key, value| %>
+    <%= f.label :rating, key %>
+    <%= f.radio_button :beer_rating, value %>
+    <br>
+
+  </div>
+  <% end %>
+
+  <div>
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>
+</div>

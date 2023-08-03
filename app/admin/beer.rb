@@ -1,9 +1,10 @@
 ActiveAdmin.register Beer do
-    permit_params :name, :tagline, :abv, :ibu, :description
+    permit_params :name, :tagline, :abv, :ibu, :description, :user_id
 
     index do
         selectable_column
         id_column
+        column :user_id
         column :name
         column :tagline
         column :first_brewed

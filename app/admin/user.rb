@@ -1,10 +1,11 @@
 ActiveAdmin.register User do
-    permit_params :full_name
+    permit_params :full_name,
 
 
     index do
         selectable_column
         id_column
+        column :beer_id
         column :full_name
         column :age
         column :address

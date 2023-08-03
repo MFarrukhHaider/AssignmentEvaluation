@@ -4,6 +4,8 @@ class BeersController < ApplicationController
   def index
     @beers=Beer.all
     @user=User.find_by(id: current_user)
+    @user = User.find(current_user.id)
+    @user_beers=Beer.where(user_id:@user.id)
     # byebug
   end
   def index1
@@ -12,6 +14,8 @@ class BeersController < ApplicationController
   def show
     @beer = Beer.find(params[:id])
     @beer2=@beer.id
+
+
   end
 
     def fetch_data_from_public_api

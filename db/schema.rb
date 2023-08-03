@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_01_084837) do
+ActiveRecord::Schema.define(version: 2023_08_03_134317) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(version: 2023_08_01_084837) do
     t.string "brewers_tips"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_beers_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -83,7 +85,7 @@ ActiveRecord::Schema.define(version: 2023_08_01_084837) do
     t.integer "beer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "rating"
+    t.integer "beer_rating"
     t.index ["beer_id"], name: "index_ratings_on_beer_id"
     t.index ["user_id"], name: "index_ratings_on_user_id"
   end
@@ -115,6 +117,7 @@ ActiveRecord::Schema.define(version: 2023_08_01_084837) do
     t.index ["user_id"], name: "index_users_comments_on_user_id"
   end
 
+  add_foreign_key "beers", "users"
   add_foreign_key "comments", "beers"
   add_foreign_key "comments", "users"
   add_foreign_key "favorite_beers", "beers"
