@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_03_134317) do
+ActiveRecord::Schema.define(version: 2023_08_05_094259) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -71,6 +71,17 @@ ActiveRecord::Schema.define(version: 2023_08_03_134317) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "contact_us", force: :cascade do |t|
+    t.string "message"
+    t.integer "user_id", null: false
+    t.integer "admin_user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "reply"
+    t.index ["admin_user_id"], name: "index_contact_us_on_admin_user_id"
+    t.index ["user_id"], name: "index_contact_us_on_user_id"
+  end
+
   create_table "favorite_beers", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "beer_id", null: false
@@ -103,6 +114,7 @@ ActiveRecord::Schema.define(version: 2023_08_03_134317) do
     t.integer "phone_number"
     t.string "address"
     t.string "gender"
+    t.json "user_reply"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -120,6 +132,8 @@ ActiveRecord::Schema.define(version: 2023_08_03_134317) do
   add_foreign_key "beers", "users"
   add_foreign_key "comments", "beers"
   add_foreign_key "comments", "users"
+  add_foreign_key "contact_us", "admin_users"
+  add_foreign_key "contact_us", "users"
   add_foreign_key "favorite_beers", "beers"
   add_foreign_key "favorite_beers", "users"
   add_foreign_key "ratings", "beers"

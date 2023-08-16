@@ -1,0 +1,23 @@
+<h2> Contact-Us Page</h2>
+<%# <div class="contact-us-page"> %>
+
+<%= form_with model: @contact_us, url: "/users/#{@user.id}/contact_us" do |f| %>
+ <div>
+     <%# <%= f.label :user_id%> 
+     <%= f.hidden_field :user_id, value: current_user.id%>
+  </div>
+<div>
+    <%= f.label :admin_user_id %>
+    <%= f.select :admin_user_id, options_for_select(AdminUser.pluck(:id), { prompt: 'Select an Admin' })%>
+  </div>
+
+ <div class="message-box">
+     <%= f.label :message%>
+     <%= f.text_area :message%>
+  </div>
+
+  <div>
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>
+</div>

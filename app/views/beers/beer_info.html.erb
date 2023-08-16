@@ -1,0 +1,73 @@
+<%= form_tag beer_info_beers_path, id:'search-form', method: :get, remote: true do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search beers" %>
+<% end %>
+
+
+
+<table id="search-results">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Tagline</th>
+      <th scope="col">Description</th>
+      <th scope="col">First_brewed</th>
+      <th scope="col">Attenuation_Level</th>
+      <th colspan="5">
+
+    </tr>
+  </thead>
+  <tbody>
+  <%@search_results.each do |beer| %>
+   <td><%= beer.name%></td>
+   <td><%= beer.tagline%></td>
+   <td><%= beer.description%></td>
+   <td><%= beer.first_brewed%></td>
+   <td><%= beer.attenuation_level%></td>
+
+
+    </tr>
+    <%end %>
+
+  </tbody>
+</table>
+
+<script>
+const input = document.querySelector("#search");
+
+input.addEventListener("keyup", searching);
+
+function searching() {
+  $.ajax({
+    url: '/beers/beer_info',
+    type: 'GET',
+    data: { search: $(this).val() },
+    success: function(data) {
+      console.log(data);
+      $('#search-results').html(data);
+    }
+  });
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

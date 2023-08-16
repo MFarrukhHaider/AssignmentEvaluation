@@ -1,0 +1,20 @@
+<!-- app/views/user_mailer/contact_email.html.erb -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Contact Us Email</h1>
+    <p>Hello Admin,</p>
+    <p>A new contact message has been received:</p>
+
+    <p><strong>Email:</strong> <%= @user_info.email %></p>
+    <p><strong>Message:</strong></p>
+    <p><%= @contact_us.message %></p>
+
+    <p>Please respond to the user as soon as possible.</p>
+
+    <p>Thank you.</p>
+  </body>
+</html>

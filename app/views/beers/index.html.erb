@@ -1,9 +1,21 @@
+<%# <!-- app/views/search/index.html.erb -->
+<%= form_tag search_path, method: :get, remote: true, id: "search-form" do %> 
+  <%# <%= text_field_tag :query, nil, id: "search-input", placeholder: "Search..." %>
+<%# <% end %> 
+<%# <div id="search-results">
+</div>
+<div class="input-group">
+  <div class="form-outline">
+   <label class="form-label" for="form1">Search</label>
+    <input type="search" id="search-bar" class="form-control" />
+   
+  </div>
 
-<%# <%= link_to "Logout", logout_user_path(user_id: current_user.id), method: :delete %> 
-<%# <%= button_to "Logout",destroy_user_session_path, method: :delete%> 
+</div> %>
 
 
-<table >
+
+<table>
   <thead>
     <tr>
       <th scope="col">Name</th>
@@ -37,3 +49,130 @@
 
   </tbody>
 </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%# <ul style="list-style-type:circle;">
+  <li class="list-item">Coffee</li>
+  <li class="list-item">Tea</li>
+  <li class="list-item">Milk</li>
+  <li class="list-item">Milk</li>
+  <li class="list-item">Milk</li>
+  <li class="list-item">Milk</li>
+</ul> %>
+
+<%# $(document).ready(function() {
+    $('#comment-form').submit(function(e) {
+        e.preventDefault();
+
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            success: function(response) {
+                // Success handling is done in create.js.erb template
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
+        });
+    });
+}); %>
+
+
+
+
+
+
+<%# <script>
+
+document.querySelector('#search-bar').addEventListener('input', filter_results)
+
+function filter_results(){
+  const searchInput = document.querySelector('#search-bar')
+  
+  const filter=searchInput.value.toUpperCase()
+  
+  console.log(filter)
+  
+  const listItems = document.querySelectorAll('.list-item');
+
+  listItems.forEach((item) => {
+
+    let text = item.textContent;
+
+    if(text.toUpperCase().includes(filter.toUpperCase())){
+      item.style.display = '';
+    }
+    else{
+      item.style.display = 'none';
+    }
+  });
+}
+
+
+
+</script> %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%# <script>
+let searchBar=document.getElementById('search-bar');
+searchBar.addEventListener('onsearch',buttonCLickHandler)
+
+function buttonCLickHandler() {
+  console.log("hello world")
+  // const xhr = new XMLHttpRequest();
+  // xhr.open('GET')
+} %>
+
+<%# </script> %>
+<%# <script>
+document.getElementById("search-bar").addEventListener("search", myFunction);
+
+function myFunction() {
+    var x = document.getElementById("myInput");
+    document.getElementById("demo").innerHTML = "You are searching for: " + x.value;
+}
+</script> %>

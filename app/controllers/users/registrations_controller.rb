@@ -9,16 +9,25 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def new
   #   super
   # end
-
-  # POST /resource
   def create
-    super do |user|
-      UserMailer.welcome_email(user).deliver_now
+    # insert special code into instance and ensure that code is unique in database
+    super
+
+    @user = User.new(configure_sign_up_params)
+    UserMailer.welcome_email(@user).deliver_now
+    # continue to devise registration to CREATE user
+    # resource.update special_code: special_code # may want to check model is still valid at this point and handle errors if not
   end
-end
-  #   super
-  #   @user=User.new(user_params)
-  #   UserMailer.welcome_email(@user).deliver_now
+  # POST /resource
+  # def create
+    
+  #   # super
+  #   super do |user|
+  #     byebug
+  #     @user = User.new(configure_sign_up_params)
+  #     UserMailer.welcome_email(user).deliver_now
+  #   end
+  # end
 
   #   end
   # end
@@ -60,7 +69,8 @@ end
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
   # end
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up,keys:[:full_name,:age,:address,:phone_number,:gender])
+
+    devise_parameter_sanitizer.permit(:sign_up, keys:[:full_name, :age, :address, :phone_number, :gender])
   end
   # def user_params
   #   params.require(:user).permit(:full_name,:age,:address,:phone_number,:gender)

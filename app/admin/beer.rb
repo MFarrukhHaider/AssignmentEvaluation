@@ -1,4 +1,8 @@
 ActiveAdmin.register Beer do
+    config.paginate = true
+
+  # Customize the number of records per page (optional)
+    config.per_page = 1
     permit_params :name, :tagline, :abv, :ibu, :description, :user_id
 
     index do

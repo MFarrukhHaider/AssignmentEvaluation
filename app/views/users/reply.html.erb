@@ -1,0 +1,30 @@
+
+<table >
+  <thead>
+    <tr>
+      <th scope="col">User Id</th>
+      <th scope="col">Message</th>
+      <th scope="col">Reply</th>
+      <th scope="col">Admin Id</th>
+
+
+
+
+      <th colspan="7">
+
+    </tr>
+  </thead>
+  <tbody>
+  <%@contact_us.each do |beer| %>
+   <td><%= beer.user_id%></td>
+   <td><%= beer.message%></td>
+   <td><%= beer.reply%></td>
+   <td><%= beer.admin_user_id%></td>
+
+
+
+    </tr>
+    <%end %>
+
+  </tbody>
+</table>

@@ -1,0 +1,39 @@
+
+<!-- app/views/beers/index.html.erb -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Beers Page</title>
+  <!-- Include Bootstrap and your custom CSS -->
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'user', media: 'all' %>
+</head>
+<body>
+<div class="sidebar">
+    <h2>Beers Bar</h2>
+    <ul>
+       <% if user_signed_in? %>
+      <li><%= link_to "Contact Us ", "/users/#{@user.id}/contact_us/new" %></li>
+      <li><%= link_to "View Recived Responses ", "/#{@user.id}/user_replies" %></li>
+      <li><%= link_to "View Associated Beers ", "/beers" %></li>
+      <li><%= link_to "View All Beers ", "/beers/beer_info" %></li>
+      <li> <%= button_to "Logout",destroy_user_session_path, method: :delete%></li>
+      <% else %>
+      <li><%= link_to "Admin Login ", "/admin/login" %></li>
+      <li><%= link_to "User SignIn ", "/users/sign_in" %></li>
+      <li><%= link_to "User SignUp ", "/users/sign_up" %></li>
+      <%end%>
+    </ul>
+  </div>
+
+  <div class="container">
+    <h1 class="mt-5">Welcome to the Beers Page</h1>
+    <p class="paragraph">
+      This page is all about beers! You can find information and links related to beers here.
+    </p>
+
+
+  </div>
+
+</body>
+</html>

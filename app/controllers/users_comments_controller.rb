@@ -1,22 +1,24 @@
 class UsersCommentsController < ApplicationController
-    def index
-        @users_comments=UsersComment.all
+  respond_to :html, :xml, :js
 
-    end
+    # def index
+    #     @users_comments = UsersComment.all
+    #     render json: @user_comments
+    # end
+
     def show
       @beer = Beer.find(params[:id])
-      @beer2=@beer.id
-      # byebug
+      # @beer2 = @beer.id
     end
 
-    def edit
-        @user_comment=UsersComment.find(params[:id])
-    end
+    # def edit
+    #     @user_comment = UsersComment.find(params[:id])
+    # end
 
     def new
 
-      @user_comment=UsersComment.new
-      @beer_id=params[:"beer_id"]
+      @user_comment = UsersComment.new
+      @beer_id = params[:"beer_id"]
 
 
     end
@@ -28,11 +30,15 @@ class UsersCommentsController < ApplicationController
 
       @user_comment = UsersComment.new(comment_params.merge(user_id: user_id,beer_id: @beer_id))
       if @user_comment.save
-          redirect_to root_path
-        else
-          render :new, status: :unprocessable_entity
+        respond_with do |format|
+          format.html {redirect_to root_path}
+          format.js
+        end
+      else
+        render :new, status: :unprocessable_entity
         end
       end
+
 
   def comment_params
       params.require(:users_comment).permit(:user_id,:beer_id,:description)

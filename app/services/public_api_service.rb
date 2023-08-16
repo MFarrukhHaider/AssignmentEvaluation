@@ -2,10 +2,11 @@ require 'httparty'
 
 class PublicApiService
   include HTTParty
-  base_uri 'https://api.punkapi.com/v2' # Replace with the actual API endpoint
+  base_uri 'https://api.punkapi.com/v2'
 
   def fetch_data
     response = self.class.get('/beers')
+    byebug
     if response.success?
       JSON.parse(response.body)
     else

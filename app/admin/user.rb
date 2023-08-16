@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-    permit_params :full_name,
+    permit_params :full_name
 
 
     index do

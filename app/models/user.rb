@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   validates :full_name, presence: true, uniqueness: true
   validates :age, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 18 }
-  validates :phone_number, presence: true, numericality: {only_integer: true, minimum:11 ,maximum: 11}, uniqueness: true
+  validates :phone_number,  presence: true, numericality: {only_integer: true, minimum:11 ,maximum: 11}, uniqueness: true
   validates :gender, presence: true
   validates :address, presence: true
   enum gender: {male: 'M', female: 'F'}
