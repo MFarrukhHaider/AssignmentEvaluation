@@ -26,8 +26,10 @@ Rails.application.routes.draw do
   # resources :favorite_beers
   get '/:user_id/user_replies', to: 'users#reply'
   # resources :users_comments
-  # get 'logout_user', to: 'users#logout_user'
+  # get 'lrestaurantsogout_user', to: 'users#logout_user'
   root to: 'beers#main_index_page'
+  # get '/tags', to: 'users#tagged'
+
   # get '/beers_for_all', to: 'beers#beer_info'
   # get 'search', to: 'beers#search'
 

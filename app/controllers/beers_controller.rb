@@ -10,12 +10,12 @@ class BeersController < ApplicationController
   def beer_info
     # byebug
     @query = params[:search]
-    if @query
-      @search_results = Beer.where('name LIKE ?', "%#{@query}%")
-      # byebug
-    else
-      @search_results = Beer.all
-    end
+    @search_results = if @query
+                        Beer.where('name LIKE ?', "%#{@query}%")
+                      # byebug
+                      else
+                        Beer.all
+                      end
     # byebug
     respond_with do |format|
       # byebug

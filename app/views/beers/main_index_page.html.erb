@@ -17,6 +17,8 @@
       <li><%= link_to "View Recived Responses ", "/#{@user.id}/user_replies" %></li>
       <li><%= link_to "View Associated Beers ", "/beers" %></li>
       <li><%= link_to "View All Beers ", "/beers/beer_info" %></li>
+      <li><%= link_to "View All Users ", "/users" %></li>
+
       <li> <%= button_to "Logout",destroy_user_session_path, method: :delete%></li>
       <% else %>
       <li><%= link_to "Admin Login ", "/admin/login" %></li>

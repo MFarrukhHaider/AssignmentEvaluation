@@ -1,39 +1,37 @@
-<div class="container">
-<h1>
-Welcome Back <%= current_user.full_name%>
-</h1>
-</div>
-<%# <%= link_to "Logout", logout_user_path(user_id: current_user.id), method: :delete %> 
-<%# <%= button_to "Logout",destroy_user_session_path, method: :delete%> 
+
+<%= form_tag users_path, id:'search-form', method: :get, remote: true do %>
+  <%= text_field_tag :skill, params[:skill], placeholder: "Search Users" %>
+<% end %>
 
 
-<table >
+<table id="results">
   <thead>
     <tr>
       <th scope="col">Name</th>
-      <th scope="col">Tagline</th>
-      <th scope="col">Description</th>
-      <th scope="col">First_brewed</th>
-      <th scope="col">Attenuation_Level</th>
-      <th scope="col">Give Comment</th>
-      <th scope="col">Give Rating</th>
+      <th scope="col">Email</th>
+      <th scope="col">address</th>
+      <th scope="col">gender</th>
+      <th scope="col">age</th>
+      <th scope="col">Tag Lists</th>
+      <th scope="col">Experience Lists</th>
 
 
 
-      <th colspan="7">
+
+
+      <th colspan="6">
 
     </tr>
   </thead>
   <tbody>
-  <%@beers.each do |beer| %>
-   <td><%= beer.name%></td>
-   <td><%= beer.tagline%></td>
-   <td><%= beer.description%></td>
-   <td><%= beer.first_brewed%></td>
-   <td><%= beer.attenuation_level%></td>
-
-  <td><%= link_to "Show All Info", "/users/#{beer.id}" %></td>
-
+  <% @users.each do |beer| %>
+   <td><%= beer.full_name%></td>
+   <td><%= beer.email%></td>
+   <td><%= beer.address%></td>
+   <td><%= beer.gender%></td>
+   <td><%= beer.age%></td>
+   <td><%= beer.skill_list%></td>
+   <td><%= beer.experience_list%></td>
 
 
     </tr>
@@ -42,4 +40,28 @@ Welcome Back <%= current_user.full_name%>
   </tbody>
 </table>
 
+<%# <%= render "form", users: @users %> 
 
+
+
+
+<script>
+const input = document.querySelector("#skill");
+input.addEventListener("keyup", searching);
+
+function searching() {
+  // console.log("s");
+
+  // debugger
+  $.ajax({
+    url: '/users',
+    type: 'GET',
+    data: { skill: $(this).val() },
+    success: function(data) {
+      console.log(data);
+      $('#results').html(data);
+    }
+  });
+}
+
+</script>

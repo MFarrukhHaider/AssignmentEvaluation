@@ -1,0 +1,35 @@
+<table id="results" >
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">address</th>
+      <th scope="col">gender</th>
+      <th scope="col">age</th>
+      <th scope="col">Tag Lists</th>
+      <th scope="col">Experience Lists</th>
+
+
+
+
+
+      <th colspan="6">
+
+    </tr>
+  </thead>
+  <tbody>
+  <% users.each do |beer| %>
+   <td><%= beer.full_name%></td>
+   <td><%= beer.email%></td>
+   <td><%= beer.address%></td>
+   <td><%= beer.gender%></td>
+   <td><%= beer.age%></td>
+   <td><%= beer.skill_list%></td>
+   <td><%= beer.experience_list%></td>
+
+
+    </tr>
+    <%end %>
+
+  </tbody>
+</table>
