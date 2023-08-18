@@ -99,4 +99,6 @@ body, h1, h2, ul, li {
   padding-left: 20%;
   padding-bottom: 5%;
 }
-  
+#search{
+background-color: aqua;
+}

@@ -5,9 +5,22 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @users = params[:skill]
-    @users = if @users.present?
-               User.tagged_with(params[:skill])
+    # @users = params[:skill]
+    # byebug
+    @query = params[:search]
+    # byebug
+    @users = if @query.present?
+               users_with_both_tags = User.tagged_with(@query, on: :skills) & User.tagged_with(@query, on: :experiences)
+               users_with_either_tag = User.tagged_with(@query,
+                                                        on: :skills) | User.tagged_with(@query, on: :experiences)
+               #  byebug
+               #  elsif @query.present?
+               #    User.tagged_with(@query, on: :experiences)
+               if users_with_both_tags.present?
+                 users_with_both_tags
+               else
+                 users_with_either_tag
+               end
              else
                User.all
              end
